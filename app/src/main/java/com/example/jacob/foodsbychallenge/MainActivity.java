@@ -128,23 +128,25 @@ public class MainActivity extends AppCompatActivity {
             if (dropOff.day.equals(dayOfWeek)) {
                 deliveries = dropOff.deliveries;
 
-                for (Model.Delivery delivery : deliveries) {
-                    ViewGroup view = (ViewGroup) getLayoutInflater().inflate(R.layout.delivery, parentLayout);
-                    ViewGroup view2 = (ViewGroup) view.getChildAt(0);
-                    LinearLayout childLayout = (LinearLayout) view2.getChildAt(0);
+                for (int i = 0; i < deliveries.size(); i++) {
+                    Model.Delivery delivery = deliveries.get(i);
+                    getLayoutInflater().inflate(R.layout.delivery, parentLayout);
+                    ConstraintLayout view1 = (ConstraintLayout) parentLayout.getChildAt(i);
+                    LinearLayout myView = (LinearLayout) view1.getChildAt(0);
 
-                    ImageView restIcon = (ImageView) childLayout.getChildAt(0);
-                    TextView restName = (TextView) childLayout.getChildAt(1);
-                    TextView orderBy = (TextView) childLayout.getChildAt(2);
-                    TextView deliveryTime = (TextView) childLayout.getChildAt(3);
-                    TextView deliveryStatus = (TextView) childLayout.getChildAt(4);
+                    ImageView restIcon = (ImageView) myView.findViewById(R.id.restIcon);
+                    TextView restName = (TextView) myView.findViewById(R.id.restName);
+                    TextView orderBy = (TextView) myView.findViewById(R.id.orderBy);
+                    TextView deliveryTime = (TextView) myView.findViewById(R.id.delivTime);
+                    TextView deliveryStatus = (TextView) myView.findViewById(R.id.orderStatus);
 
                     restName.setText(delivery.restaurantName);
                     orderBy.setText(delivery.cutoff);
                     deliveryTime.setText(delivery.dropoff);
                     //todo implement delivery status based on boolean values in delivery
-
                 }
+
+
                 break;
             }
         }
