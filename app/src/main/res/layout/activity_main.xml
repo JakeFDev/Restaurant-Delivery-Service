@@ -18,8 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="75px"
             android:layout_marginRight="75px"
-            android:layout_marginTop="18dp"
-            android:background="@color/colorPrimary">
+            android:layout_marginTop="18dp">
 
             <TextView
                 android:id="@+id/textView"
@@ -30,8 +29,7 @@
                 android:fontFamily="-"
                 android:paddingBottom="3px"
                 android:text="@string/locationMain"
-                android:textAlignment="center"
-                android:textColor="@color/colorWhiteText" />
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -40,8 +38,7 @@
                 android:layout_alignStart="@+id/textView"
                 android:layout_below="@+id/textView"
                 android:text="@string/locationSecondary"
-                android:textAlignment="center"
-                android:textColor="@color/colorWhiteText" />
+                android:textAlignment="center" />
 
             <ImageView
                 android:id="@+id/locationIcon"
@@ -119,16 +116,11 @@
             android:layout_height="match_parent">
 
             <LinearLayout
+                android:id="@+id/places"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="PrintAllDeliveries"
-                    android:text="Test reading json" />
             </LinearLayout>
         </ScrollView>
 

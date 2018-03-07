@@ -1,11 +1,16 @@
 package com.example.jacob.foodsbychallenge;
 
 import android.support.annotation.StringRes;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.gson.GsonBuilder;
 
@@ -16,6 +21,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     Model model;
+    int day;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +32,12 @@ public class MainActivity extends AppCompatActivity {
         model = new GsonBuilder().create().fromJson(json, Model.class);
 
         setTodayButton();
+        setDeliveriesInView(day + 1);
     }
 
     private void setTodayButton() {
         Calendar calender = Calendar.getInstance();
-        int day = calender.get(Calendar.DAY_OF_WEEK);
+        day = calender.get(Calendar.DAY_OF_WEEK);
         Button todayBtn = findViewById(R.id.mondayBtn);
         switch (day) {
             case Calendar.MONDAY:
@@ -92,4 +99,56 @@ public class MainActivity extends AppCompatActivity {
         }
         return json;
     }
+
+    private void setDeliveriesInView(int day) {
+        String dayOfWeek = "";
+        switch (day) {
+            case Calendar.MONDAY:
+                dayOfWeek = "Monday";
+                break;
+            case Calendar.TUESDAY:
+                dayOfWeek = "Tuesday";
+                break;
+            case Calendar.WEDNESDAY:
+                dayOfWeek = "Wednesday";
+                break;
+            case Calendar.THURSDAY:
+                dayOfWeek = "Thursday";
+                break;
+            case Calendar.FRIDAY:
+                dayOfWeek = "Friday";
+                break;
+            default:
+                break;
+        }
+        List<Model.Delivery> deliveries;
+        LinearLayout parentLayout = findViewById(R.id.places);
+
+        for (Model.DropOff dropOff : model.dropOffs) {
+            if (dropOff.day.equals(dayOfWeek)) {
+                deliveries = dropOff.deliveries;
+
+                for (Model.Delivery delivery : deliveries) {
+                    ViewGroup view = (ViewGroup) getLayoutInflater().inflate(R.layout.delivery, parentLayout);
+                    ViewGroup view2 = (ViewGroup) view.getChildAt(0);
+                    LinearLayout childLayout = (LinearLayout) view2.getChildAt(0);
+
+                    ImageView restIcon = (ImageView) childLayout.getChildAt(0);
+                    TextView restName = (TextView) childLayout.getChildAt(1);
+                    TextView orderBy = (TextView) childLayout.getChildAt(2);
+                    TextView deliveryTime = (TextView) childLayout.getChildAt(3);
+                    TextView deliveryStatus = (TextView) childLayout.getChildAt(4);
+
+                    restName.setText(delivery.restaurantName);
+                    orderBy.setText(delivery.cutoff);
+                    deliveryTime.setText(delivery.dropoff);
+                    //todo implement delivery status based on boolean values in delivery
+
+                }
+                break;
+            }
+        }
+    }
+
+
 }
