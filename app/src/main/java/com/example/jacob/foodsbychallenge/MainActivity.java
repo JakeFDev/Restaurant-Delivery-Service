@@ -1,18 +1,18 @@
 package com.example.jacob.foodsbychallenge;
 
-import android.support.annotation.StringRes;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.GsonBuilder;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,7 +32,27 @@ public class MainActivity extends AppCompatActivity {
         model = new GsonBuilder().create().fromJson(json, Model.class);
 
         setTodayButton();
-        setDeliveriesInView(day + 1);
+        setDeliveriesInView(day);
+    }
+
+    public void onMonClick(View view) {
+        setDeliveriesInView(Calendar.MONDAY);
+    }
+
+    public void onTueClick(View view) {
+        setDeliveriesInView(Calendar.TUESDAY);
+    }
+
+    public void onWedClick(View view) {
+        setDeliveriesInView(Calendar.WEDNESDAY);
+    }
+
+    public void onThuClick(View view) {
+        setDeliveriesInView(Calendar.THURSDAY);
+    }
+
+    public void onFriClick(View view) {
+        setDeliveriesInView(Calendar.FRIDAY);
     }
 
     private void setTodayButton() {
@@ -61,28 +81,6 @@ public class MainActivity extends AppCompatActivity {
         todayBtn.setText(R.string.today);
     }
 
-    public void PrintAllDeliveries(View v) {
-        for (Model.Delivery d : model.dropOffs.get(0).deliveries) {
-            System.out.println(d.toString());
-        }
-
-        for (Model.Delivery d : model.dropOffs.get(1).deliveries) {
-            System.out.println(d.toString());
-        }
-
-        for (Model.Delivery d : model.dropOffs.get(2).deliveries) {
-            System.out.println(d.toString());
-        }
-
-        for (Model.Delivery d : model.dropOffs.get(3).deliveries) {
-            System.out.println(d.toString());
-        }
-
-        for (Model.Delivery d : model.dropOffs.get(4).deliveries) {
-            System.out.println(d.toString());
-        }
-    }
-
     private String readDelivieriesJSON() {
         String json = null;
         try {
@@ -101,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setDeliveriesInView(int day) {
+
         String dayOfWeek = "";
         switch (day) {
             case Calendar.MONDAY:
@@ -124,15 +123,19 @@ public class MainActivity extends AppCompatActivity {
         List<Model.Delivery> deliveries;
         LinearLayout parentLayout = findViewById(R.id.places);
 
+        //Clear the parentLayout of any current items
+        parentLayout.removeAllViews();
+
+        //Populate the view
         for (Model.DropOff dropOff : model.dropOffs) {
             if (dropOff.day.equals(dayOfWeek)) {
                 deliveries = dropOff.deliveries;
 
                 for (int i = 0; i < deliveries.size(); i++) {
                     Model.Delivery delivery = deliveries.get(i);
+                    TransitionManager.beginDelayedTransition(parentLayout);
                     getLayoutInflater().inflate(R.layout.delivery, parentLayout);
-                    ConstraintLayout view1 = (ConstraintLayout) parentLayout.getChildAt(i);
-                    LinearLayout myView = (LinearLayout) view1.getChildAt(0);
+                    ConstraintLayout myView = (ConstraintLayout) parentLayout.getChildAt(i);
 
                     ImageView restIcon = (ImageView) myView.findViewById(R.id.restIcon);
                     TextView restName = (TextView) myView.findViewById(R.id.restName);
@@ -140,13 +143,13 @@ public class MainActivity extends AppCompatActivity {
                     TextView deliveryTime = (TextView) myView.findViewById(R.id.delivTime);
                     TextView deliveryStatus = (TextView) myView.findViewById(R.id.orderStatus);
 
+                    Picasso.with(this).load(delivery.logoUrl).resize(500,400).into(restIcon);
                     restName.setText(delivery.restaurantName);
                     orderBy.setText(delivery.cutoff);
                     deliveryTime.setText(delivery.dropoff);
                     //todo implement delivery status based on boolean values in delivery
+
                 }
-
-
                 break;
             }
         }
