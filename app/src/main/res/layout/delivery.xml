@@ -10,13 +10,12 @@
         android:id="@+id/restIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.014"
         app:srcCompat="@drawable/ic_launcher_background" />
 
     <TextView
@@ -24,14 +23,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="10dp"
         android:fontFamily="@font/pt_sans_web_bold"
+        android:maxWidth="450px"
         android:text="Restaurant Name"
         android:textColor="@color/colorPrimary"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:maxWidth="450px"
         app:layout_constraintStart_toEndOf="@+id/restIcon"
         app:layout_constraintTop_toTopOf="@+id/restIcon" />
 
@@ -40,27 +38,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/restName"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="11dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/text_border"
         android:fontFamily="@font/pt_sans_web_bold"
         android:text="Order By:"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/restIcon"
-        app:layout_constraintTop_toBottomOf="@+id/restName" />
+        app:layout_constraintStart_toEndOf="@+id/orderByTxt"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/delivTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="10dp"
         android:background="@drawable/text_border"
+        android:fontFamily="@font/pt_sans_web_bold"
         android:text="Delivery Time:"
         android:textSize="12sp"
         android:textStyle="bold"
-        android:fontFamily="@font/pt_sans_web_bold"
-        app:layout_constraintStart_toEndOf="@+id/restIcon"
+        app:layout_constraintStart_toEndOf="@+id/deliveryTimeTxt"
         app:layout_constraintTop_toBottomOf="@+id/orderBy" />
 
     <TextView
@@ -68,37 +66,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/view"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="10dp"
         android:background="@drawable/text_centered_border"
         android:fontFamily="@font/pt_sans_web_bold"
+        android:paddingLeft="45dp"
+        android:paddingRight="45dp"
         android:text="ORDER STATUS HERE"
         android:textColor="@color/colorWhiteText"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/restIcon"
-        app:layout_constraintTop_toBottomOf="@+id/deliveryTimeTxt" />
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/orderStatus" />
+        app:layout_constraintStart_toEndOf="@+id/restIcon" />
 
     <TextView
         android:id="@+id/deliveryTimeTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginStart="10dp"
         android:fontFamily="@font/pt_sans_web_bold"
         android:text="Delivery Time:"
         android:textSize="12sp"
@@ -109,12 +93,27 @@
         android:id="@+id/orderByTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="11dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="65dp"
         android:fontFamily="@font/pt_sans_web_bold"
         android:text="Order By:"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/restIcon"
-        app:layout_constraintTop_toBottomOf="@+id/restName" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/orderStatus" />
 
 </android.support.constraint.ConstraintLayout>
