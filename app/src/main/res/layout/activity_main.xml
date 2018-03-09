@@ -21,7 +21,7 @@
             android:layout_marginTop="18dp">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/locationLine1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -32,11 +32,11 @@
                 android:fontFamily="@font/pt_sans_web_regular"/>
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/locationLine2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/textView"
-                android:layout_below="@+id/textView"
+                android:layout_alignStart="@+id/locationLine1"
+                android:layout_below="@+id/locationLine1"
                 android:text="@string/locationSecondary"
                 android:textAlignment="center"
                 android:fontFamily="@font/pt_sans_web_regular"/>
@@ -45,9 +45,9 @@
                 android:id="@+id/locationIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/textView2"
+                android:layout_alignBottom="@+id/locationLine2"
                 android:layout_alignParentTop="true"
-                android:layout_toStartOf="@+id/textView"
+                android:layout_toStartOf="@+id/locationLine1"
                 android:adjustViewBounds="false"
                 android:cropToPadding="false"
                 android:paddingBottom="15px"

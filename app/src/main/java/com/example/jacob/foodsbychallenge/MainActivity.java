@@ -1,7 +1,6 @@
 package com.example.jacob.foodsbychallenge;
 
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,7 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,7 +21,6 @@ import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -37,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String json = readDelivieriesJSON();
+        String json = readDeliveriesJSON();
         model = new GsonBuilder().create().fromJson(json, Model.class);
 
         setTodayButton();
@@ -89,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         friBtn.setElevation(100);
     }
 
-    private void setTodayButton() {
+    public void setTodayButton() {
         Calendar calender = Calendar.getInstance();
         day = calender.get(Calendar.DAY_OF_WEEK);
         Button todayBtn = findViewById(R.id.mondayBtn);
@@ -118,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         todayBtn.setTextColor(Color.WHITE);
     }
 
-    private String readDelivieriesJSON() {
+    public String readDeliveriesJSON() {
         String json = null;
         try {
             InputStream is = this.getResources().openRawResource(R.raw.deliveries_sample);
@@ -135,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
         return json;
     }
 
-    private void setDeliveriesInView(int day) {
+    public void setDeliveriesInView(int day) {
 
         String dayOfWeek = "";
         switch (day) {
@@ -209,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
                         deliveryStatus.setText(R.string.is_past_cutoff);
                     }
                     else if (delivery.sellingOut) {
-                        deliveryStatus.setText(R.string.order_placed);
+                        deliveryStatus.setText(R.string.selling_out);
                     }
                     else {
                         deliveryStatus.setVisibility(View.INVISIBLE);
@@ -221,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void resetAllButtons() {
+    public void resetAllButtons() {
         LinearLayout buttonContainer = findViewById(R.id.buttonContainer);
         for (int i = 0; i < buttonContainer.getChildCount(); i++) {
             Button button = (Button) buttonContainer.getChildAt(i);

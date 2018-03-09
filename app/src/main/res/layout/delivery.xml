@@ -31,6 +31,7 @@
         android:textColor="@color/colorPrimary"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:maxWidth="450px"
         app:layout_constraintStart_toEndOf="@+id/restIcon"
         app:layout_constraintTop_toTopOf="@+id/restIcon" />
 
@@ -68,20 +69,20 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/view"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/text_centered_border"
         android:fontFamily="@font/pt_sans_web_bold"
         android:text="ORDER STATUS HERE"
         android:textColor="@color/colorWhiteText"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/restIcon"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/deliveryTimeTxt" />
 
     <View
         android:id="@+id/view"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
@@ -90,7 +91,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/restIcon" />
+        app:layout_constraintTop_toBottomOf="@+id/orderStatus" />
 
     <TextView
         android:id="@+id/deliveryTimeTxt"

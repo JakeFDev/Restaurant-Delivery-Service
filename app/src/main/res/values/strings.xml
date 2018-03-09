@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Foodsby</string>
     <string name="locationMain">5700 Boradmoor - Mission Towers</string>
-    <string name="locationSecondary"> 5700 Boradmoor Street, Mission KS</string>
+    <string name="locationSecondary">5700 Boradmoor Street, Mission KS</string>
     <string name="monday">Mon</string>
     <string name="tuesday">Tue</string>
     <string name="wednesday">Wed</string>
