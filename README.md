@@ -27,3 +27,5 @@ Pixel API 25
 
 Pixel XL API 24
 
+## MISC NOTES
+> While the image placeholder is 300x200, it is resized to match design documents.
