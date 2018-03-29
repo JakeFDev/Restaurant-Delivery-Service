@@ -8,7 +8,7 @@ The app is only meant to be a skeleton view of what could be.
 
 ## Installation/Download
 
-> Clone the repository with git or download from the GitHub page: https://github.com/JakeFDev/SuperSecretChallenge#supersecretchallenge
+> Clone the repository with git or download from the GitHub page
 
 ## Running in a simulator
 > Open the project in Android Studio, click the run button, and select a device to run the application on.
