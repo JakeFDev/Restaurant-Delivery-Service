@@ -29,3 +29,6 @@ Pixel XL API 24
 
 ## MISC NOTES
 > While the image placeholder is 300x200, it is resized to match design documents.
+
+## Preview
+![ScreenShot](https://github.com/JakeFDev/Restaurant-Delivery-Service/blob/master/unnamed.png)
