@@ -41,49 +41,47 @@ public class MainActivity extends AppCompatActivity {
         setDeliveriesInView(day);
     }
 
-    public void onMonClick(View view) {
-        setDeliveriesInView(Calendar.MONDAY);
-        resetAllButtons();
-        Button mondayBtn = findViewById(R.id.mondayBtn);
-        mondayBtn.setBackgroundResource(R.drawable.button_active);
-        mondayBtn.setTextColor(Color.WHITE);
-        mondayBtn.setElevation(100);
-    }
+    public void onDayClick(View view) {
+        int id = view.getId();
+        Button tappedDayBtn = null;
 
-    public void onTueClick(View view) {
-        setDeliveriesInView(Calendar.TUESDAY);
-        resetAllButtons();
-        Button tuesBtn = findViewById(R.id.tuesdayBtn);
-        tuesBtn.setBackgroundResource(R.drawable.button_active);
-        tuesBtn.setTextColor(Color.WHITE);
-        tuesBtn.setElevation(100);
-    }
+        switch (id) {
+            case R.id.mondayBtn :
+                setDeliveriesInView(Calendar.MONDAY);
+                resetAllButtons();
+                tappedDayBtn = findViewById(R.id.mondayBtn);
+                break;
+            case R.id.tuesdayBtn :
+                setDeliveriesInView(Calendar.TUESDAY);
+                resetAllButtons();
+                tappedDayBtn = findViewById(R.id.tuesdayBtn);
+                break;
+            case R.id.wednesdayBtn :
+                setDeliveriesInView(Calendar.WEDNESDAY);
+                resetAllButtons();
+                tappedDayBtn = findViewById(R.id.wednesdayBtn);
+                break;
+            case R.id.thursdayBtn :
+                setDeliveriesInView(Calendar.THURSDAY);
+                resetAllButtons();
+                tappedDayBtn = findViewById(R.id.thursdayBtn);
+                break;
+            case R.id.fridayBtn :
+                setDeliveriesInView(Calendar.FRIDAY);
+                resetAllButtons();
+                tappedDayBtn = findViewById(R.id.fridayBtn);
+                break;
+            default:
+                break;
+        }
 
-    public void onWedClick(View view) {
-        setDeliveriesInView(Calendar.WEDNESDAY);
-        resetAllButtons();
-        Button wedBtn = findViewById(R.id.wednesdayBtn);
-        wedBtn.setBackgroundResource(R.drawable.button_active);
-        wedBtn.setTextColor(Color.WHITE);
-        wedBtn.setElevation(100);
-    }
-
-    public void onThuClick(View view) {
-        setDeliveriesInView(Calendar.THURSDAY);
-        resetAllButtons();
-        Button thuBtn = findViewById(R.id.thursdayBtn);
-        thuBtn.setBackgroundResource(R.drawable.button_active);
-        thuBtn.setTextColor(Color.WHITE);
-        thuBtn.setElevation(100);
-    }
-
-    public void onFriClick(View view) {
-        setDeliveriesInView(Calendar.FRIDAY);
-        resetAllButtons();
-        Button friBtn = findViewById(R.id.fridayBtn);
-        friBtn.setBackgroundResource(R.drawable.button_active);
-        friBtn.setTextColor(Color.WHITE);
-        friBtn.setElevation(100);
+        if (tappedDayBtn != null) {
+            tappedDayBtn.setBackgroundResource(R.drawable.button_active);
+            tappedDayBtn.setTextColor(Color.WHITE);
+            tappedDayBtn.setElevation(100);
+        }
+        else
+            Log.e("MainActivity", "Day button clicked does not have a valid id.");
     }
 
     public void setTodayButton() {
