@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_gravity="center"
+        card_view:cardBackgroundColor="@color/cardview_light_background"
+        card_view:cardCornerRadius="4dp"
+        card_view:cardElevation="4dp">
+
+        <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/topLevelDelivery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/restIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_launcher_background" />
+
+            <TextView
+                android:id="@+id/restName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/pt_sans_web_bold"
+                android:maxWidth="450px"
+                android:text="Restaurant Name"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/restIcon"
+                app:layout_constraintTop_toTopOf="@+id/restIcon" />
+
+            <TextView
+                android:id="@+id/orderBy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/restName"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="55dp"
+                android:fontFamily="@font/pt_sans_web_regular"
+                android:text="Order By:"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/orderByTxt"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/delivTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/pt_sans_web_regular"
+                android:text="Delivery Time:"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/deliveryTimeTxt"
+                app:layout_constraintTop_toBottomOf="@+id/orderBy" />
+
+            <TextView
+                android:id="@+id/orderStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/view"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="37dp"
+                android:background="@drawable/text_centered_border"
+                android:fontFamily="@font/pt_sans_web_bold"
+                android:minWidth="165dp"
+                android:text="ORDER STATUS HERE"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhiteText"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/restIcon"
+                app:layout_constraintTop_toBottomOf="@+id/restName" />
+
+            <TextView
+                android:id="@+id/deliveryTimeTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="21dp"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/pt_sans_web_bold"
+                android:text="Delivery Time:"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/restIcon"
+                app:layout_constraintTop_toBottomOf="@+id/orderByTxt" />
+
+            <TextView
+                android:id="@+id/orderByTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="55dp"
+                android:fontFamily="@font/pt_sans_web_bold"
+                android:text="Order By:"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/restIcon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

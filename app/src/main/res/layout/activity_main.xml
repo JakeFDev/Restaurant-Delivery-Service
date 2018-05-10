@@ -5,6 +5,8 @@
     android:id="@+id/MainLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingRight="10dp"
+    android:paddingStart="10dp"
     tools:context="com.example.jacob.foodsbychallenge.MainActivity">
 
     <LinearLayout
@@ -16,9 +18,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="75px"
-            android:layout_marginRight="75px"
-            android:layout_marginTop="18dp">
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
 
             <TextView
                 android:id="@+id/locationLine1"
@@ -26,10 +27,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
+                android:fontFamily="@font/pt_sans_web_regular"
                 android:paddingBottom="3px"
                 android:text="@string/locationMain"
-                android:textAlignment="center"
-                android:fontFamily="@font/pt_sans_web_regular"/>
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/locationLine2"
@@ -37,9 +38,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/locationLine1"
                 android:layout_below="@+id/locationLine1"
+                android:fontFamily="@font/pt_sans_web_regular"
                 android:text="@string/locationSecondary"
-                android:textAlignment="center"
-                android:fontFamily="@font/pt_sans_web_regular"/>
+                android:textAlignment="center" />
 
             <ImageView
                 android:id="@+id/locationIcon"
@@ -60,15 +61,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
 
             <LinearLayout
                 android:id="@+id/buttonContainer"
                 android:layout_width="match_parent"
                 android:layout_height="100px"
-                android:layout_marginLeft="50px"
-                android:layout_marginRight="75px"
-                android:layout_marginTop="75px"
                 android:orientation="horizontal">
 
                 <Button
@@ -140,20 +140,12 @@
 
         </LinearLayout>
 
-        <ScrollView
+        <ListView
+            android:id="@+id/listViewContent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:id="@+id/places"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <!-- dynamically added content goes here -->
-
-            </LinearLayout>
-        </ScrollView>
+            android:layout_height="match_parent"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="5.0sp" />
 
     </LinearLayout>
 

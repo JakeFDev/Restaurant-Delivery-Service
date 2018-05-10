@@ -1,33 +1,24 @@
 package com.example.jacob.foodsbychallenge;
 
 import android.graphics.Color;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.ListView;
 
 import com.google.gson.GsonBuilder;
-import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     Model model;
     int day;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,67 +143,31 @@ public class MainActivity extends AppCompatActivity {
             default:
                 break;
         }
-        List<Model.Delivery> deliveries;
-        LinearLayout parentLayout = findViewById(R.id.places);
 
-        //Clear the parentLayout of any current items
-        parentLayout.removeAllViews();
+        boolean containsDeliveries = false;
 
-        //Populate the view
-        for (Model.DropOff dropOff : model.dropOffs) {
-            if (dropOff.day.equals(dayOfWeek)) {
-                deliveries = dropOff.deliveries;
-
-                for (int i = 0; i < deliveries.size(); i++) {
-                    Model.Delivery delivery = deliveries.get(i);
-                    TransitionManager.beginDelayedTransition(parentLayout);
-                    ViewGroup view = (ViewGroup) getLayoutInflater().inflate(R.layout.delivery, parentLayout);
-                    ConstraintLayout myView = (ConstraintLayout) parentLayout.getChildAt(i);
-
-                    ImageView restIcon = (ImageView) myView.findViewById(R.id.restIcon);
-                    TextView restName = (TextView) myView.findViewById(R.id.restName);
-                    TextView orderBy = (TextView) myView.findViewById(R.id.orderBy);
-                    TextView deliveryTime = (TextView) myView.findViewById(R.id.delivTime);
-                    TextView deliveryStatus = (TextView) myView.findViewById(R.id.orderStatus);
-
-                    DateFormat outputFormat = new SimpleDateFormat("hh:mm aa");
-                    DateFormat inputFormat = new SimpleDateFormat("HH:mm:ss");
-                    try {
-                        Date dateCutoff = inputFormat.parse(delivery.cutoff);
-                        Date dateDropoff = inputFormat.parse(delivery.dropoff);
-
-                        String sDateCutoff = outputFormat.format(dateCutoff);
-                        String sDateDropoff = outputFormat.format(dateDropoff);
-
-                        orderBy.setText(sDateCutoff);
-                        deliveryTime.setText(sDateDropoff);
-
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-
-                    Picasso.with(this).load(delivery.logoUrl).resize(500,400).into(restIcon);
-                    restName.setText(delivery.restaurantName);
-
-                    if (delivery.isOrderPlaced) {
-                        deliveryStatus.setText(R.string.order_placed);
-                    }
-                    else if (delivery.soldOut) {
-                        deliveryStatus.setText(R.string.sold_out);
-                    }
-                    else if (delivery.isPastCutoff) {
-                        deliveryStatus.setText(R.string.is_past_cutoff);
-                    }
-                    else if (delivery.sellingOut) {
-                        deliveryStatus.setText(R.string.selling_out);
-                    }
-                    else {
-                        deliveryStatus.setVisibility(View.INVISIBLE);
-                    }
-
+        //Get the list of restaurant names for our adapter (needed to populate listview)
+        String[] restNames;
+        for (int i = 0; i < model.dropOffs.size(); i++) {
+            if (model.dropOffs.get(i).day.equals(dayOfWeek)) {
+                containsDeliveries = true;
+                restNames = new String[model.dropOffs.get(i).deliveries.size()];
+                int j = 0;
+                for (Model.Delivery delivery : model.dropOffs.get(i).deliveries) {
+                    restNames[j] = delivery.restaurantName;
+                    j++;
                 }
+                DeliveryListAdapter deliveryAdapter = new DeliveryListAdapter(this, model.dropOffs.toArray(), dayOfWeek, restNames);
+                listView = (ListView) findViewById(R.id.listViewContent);
+                listView.setAdapter(deliveryAdapter);
+
                 break;
             }
+        }
+
+        if (!containsDeliveries) {
+            listView = (ListView) findViewById(R.id.listViewContent);
+            listView.setAdapter(null);
         }
     }
 
