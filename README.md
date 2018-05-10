@@ -10,6 +10,11 @@ The app is only meant to be a skeleton view of what could be.
 
 > Clone the repository with git or download from the GitHub page
 
+## Branches
+> Master: Contains the original version (made just using layout inflator, no card view)
+
+> ListViewVersion: Contains improved version using ListView to handle dynamic loading of restaurants into view, card views
+
 ## Running in a simulator
 > Open the project in Android Studio, click the run button, and select a device to run the application on.
 
@@ -31,4 +36,12 @@ Pixel XL API 24
 > While the image placeholder is 300x200, it is resized to match design documents.
 
 ## Preview
+Master:
+
 ![ScreenShot](https://github.com/JakeFDev/Restaurant-Delivery-Service/blob/master/unnamed.png)
+
+
+
+ListViewVersion
+
+![ScreenShot](https://github.com/JakeFDev/Restaurant-Delivery-Service/blob/master/ListViewVersion.png)
